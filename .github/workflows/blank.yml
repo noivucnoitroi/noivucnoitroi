@@ -1,0 +1,80 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+            - tên: Cài đặt Java JDK
+  sử dụng: actions/setup-java@v4.5.0
+  với:
+    # Phiên bản Java cần thiết lập. Cần có phiên bản Java toàn bộ hoặc semver. Xem ví dụ về cú pháp được hỗ trợ trong tệp README
+    java-version: # tùy chọn
+    # Đường dẫn đến tệp `.java-version`. Xem ví dụ về cú pháp được hỗ trợ trong tệp README
+    java-version-file: # tùy chọn
+    # Phân phối Java. Xem danh sách các bản phân phối được hỗ trợ trong tệp README
+    phân bổ:
+    # Kiểu gói (jdk, jre, jdk+fx, jre+fx)
+    java-package: # tùy chọn, mặc định là jdk
+    # Kiến trúc của gói (mặc định là kiến ​​trúc của trình chạy hành động)
+    kiến trúc: # tùy chọn
+    # Đường dẫn đến nơi chứa JDK đã nén
+    jdkFile: # tùy chọn
+    # Đặt tùy chọn này nếu bạn muốn hành động kiểm tra phiên bản mới nhất có sẵn đáp ứng thông số kỹ thuật phiên bản
+    kiểm tra-mới nhất: # tùy chọn
+    # ID của kho lưu trữ distributionManagement trong tệp pom.xml. Mặc định là `github`
+    server-id: # tùy chọn, mặc định là github
+    # Tên biến môi trường cho tên người dùng để xác thực với kho lưu trữ Apache Maven. Mặc định là $GITHUB_ACTOR
+    server-username: # tùy chọn, mặc định là GITHUB_ACTOR
+    # Tên biến môi trường cho mật khẩu hoặc mã thông báo để xác thực với kho lưu trữ Apache Maven. Mặc định là $GITHUB_TOKEN
+    server-password: # tùy chọn, mặc định là GITHUB_TOKEN
+    # Đường dẫn đến nơi file settings.xml sẽ được ghi. Mặc định là ~/.m2.
+    settings-path: # tùy chọn
+    # Ghi đè lên tệp settings.xml nếu nó tồn tại. Mặc định là "true".
+    overwrite-settings: # tùy chọn, mặc định là đúng
+    # Khóa riêng GPG để nhập. Mặc định là chuỗi rỗng.
+    gpg-private-key: # tùy chọn
+    # Tên biến môi trường cho mật khẩu khóa riêng GPG. Mặc định là $GPG_PASSPHRASE.
+    gpg-passphrase: # tùy chọn
+    # Tên của nền tảng xây dựng để lưu trữ các phụ thuộc. Có thể là "maven", "gradle" hoặc "sbt".
+    bộ nhớ đệm: # tùy chọn
+    # Đường dẫn đến tệp phụ thuộc: pom.xml, build.gradle, build.sbt, v.v. Tùy chọn này có thể được sử dụng với tùy chọn `cache`. Nếu tùy chọn này bị bỏ qua, hành động sẽ tìm kiếm tệp phụ thuộc trong toàn bộ kho lưu trữ. Tùy chọn này hỗ trợ ký tự đại diện và danh sách tên tệp để lưu trữ đệm nhiều phụ thuộc.
+    cache-dependency-path: # tùy chọn
+    # Giải pháp thay thế để chuyển trạng thái công việc sang bước đăng công việc. Biến này không dành cho việc thiết lập thủ công
+    job-status: # tùy chọn, mặc định là ${{ job.status }}
+    # Mã thông báo được sử dụng để xác thực khi tải xuống các bản kê khai phiên bản được lưu trữ trên github.com, chẳng hạn như đối với Microsoft Build của OpenJDK. Khi chạy hành động này trên github.com, giá trị mặc định là đủ. Khi chạy trên GHES, bạn có thể chuyển mã thông báo truy cập cá nhân cho github.com nếu bạn đang gặp phải giới hạn tốc độ.
+    token: # tùy chọn, mặc định là ${{ github.server_url == 'https://github.com' && github.token || '' }}
+    # Tên của Maven Toolchain ID nếu tên mặc định của "${distribution}_${java-version}" không được mong muốn. Xem các ví dụ về cú pháp được hỗ trợ trong tệp Sử dụng nâng cao
+    mvn-toolchain-id: # tùy chọn
+    # Tên của Maven Toolchain Vendor nếu tên mặc định của "${distribution}" không được mong muốn. Xem ví dụ về cú pháp được hỗ trợ trong tệp Advanced Usage
+    mvn-toolchain-vendor: # tùy chọn
+          
